@@ -37,14 +37,13 @@ def getpic(data):
             f.write(r.content)
     return 'ok'
 
-url1='具体图片的那个页面'
+url1='http://www.kepuchina.cn/qykj/yykx/201705/t20170510_197033.shtml'
 url='网址'
 data=[]
-a=gethtml(url)
+#a=gethtml(url)
 #print(getdetail(a,data))
 getpicurl(url1,data)
-#print(data[0])
-#print(data[0])
+#print(data)
 getpic(data)
 
 
