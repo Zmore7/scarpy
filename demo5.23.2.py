@@ -1,22 +1,28 @@
+#我能爬图片的哦~
 import requests
 import re
 from bs4 import BeautifulSoup
-def downpic(url):
-
-    return
+def downpic(url,i):
+    path = "C://Users/nyhz/Pictures/spiderpic/" + str(i) + '.jpg'
+    r=requests.get(url)
+    r.encoding=r.apparent_encoding
+    with open(path, 'wb') as f:
+        f.write(r.content)
+    return 0
 
 def getpic(lib):
     #src="https://jp.netcdn.space/digital/video/h_113cb00015/h_113cb00015ps.jpg"
-    pattern=re.compile(r'src="https://()')
+    pattern=re.compile(r'https://jp.netcdn.space/digital/video/.*?jpg',re.S)
     for i in range(len(lib)):
         url=lib[i]
-
-    return url
+        a=re.findall(pattern,str(url))
+        downpic(a[0],i)
+    return 'ok'
 
 
 def main():
     root = 'https://avio.pw/cn/'
-    keywords = 'f'
+    keywords = input()
     url = root + keywords
     r = requests.get(url)
     r.raise_for_status()
